@@ -1,0 +1,178 @@
+{
+  "address": "EzsJ9BEKsa161p4iYoWymzzYY8gnd5uWqAnprekyrMDt",
+  "metadata": {
+    "name": "clmm_basic",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_pool",
+      "discriminator": [
+        233,
+        146,
+        209,
+        142,
+        207,
+        104,
+        64,
+        188
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "token0_mint"
+              },
+              {
+                "kind": "arg",
+                "path": "token1_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "token0_vault",
+          "writable": true
+        },
+        {
+          "name": "token1_vault",
+          "writable": true
+        },
+        {
+          "name": "token0_mint"
+        },
+        {
+          "name": "token1_mint"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "token0_mint",
+          "type": "pubkey"
+        },
+        {
+          "name": "token1_mint",
+          "type": "pubkey"
+        },
+        {
+          "name": "initial_sqrt_price",
+          "type": "u128"
+        },
+        {
+          "name": "tick_spacing",
+          "type": "u16"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Pool",
+      "discriminator": [
+        241,
+        154,
+        109,
+        4,
+        17,
+        177,
+        109,
+        188
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "IdenticalTokenMints",
+      "msg": "Token mints must be different"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidInitialPrice",
+      "msg": "Initial sqrt price must be greater than 0"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidTickSpacing",
+      "msg": "Tick spacing must be greater than 0"
+    }
+  ],
+  "types": [
+    {
+      "name": "Pool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "token0_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "token1_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "token0_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "token1_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "sqrt_price",
+            "type": "u128"
+          },
+          {
+            "name": "current_tick",
+            "type": "i32"
+          },
+          {
+            "name": "liquidity",
+            "type": "u128"
+          },
+          {
+            "name": "tick_spacing",
+            "type": "u16"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
