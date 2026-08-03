@@ -10,4 +10,25 @@ pub enum ClmmError {
 
     #[msg("Tick spacing must be greater than 0")]
     InvalidTickSpacing,
+
+    #[msg("Initial tick is not aligned with tick spacing")]
+    InvalidInitialTick,
+
+    #[msg("Tick out of bounds")]
+    InvalidTick,
+
+    #[msg("Invalid sqrt price")]
+    InvalidSqrtPrice,
+
+    #[msg("Invalid price range")]
+    InvalidPriceRange,
+
+    #[msg("Math overflow")]
+    MathOverflow,
+
+    #[msg("Tick already initialized")]
+    TickAlreadyInitialized,
+
+    #[msg("Tick not initialized")]
+    TickNotInitialized,
 }
