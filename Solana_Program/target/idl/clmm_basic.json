@@ -127,6 +127,41 @@
       "code": 6002,
       "name": "InvalidTickSpacing",
       "msg": "Tick spacing must be greater than 0"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidInitialTick",
+      "msg": "Initial tick is not aligned with tick spacing"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidTick",
+      "msg": "Tick out of bounds"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidSqrtPrice",
+      "msg": "Invalid sqrt price"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidPriceRange",
+      "msg": "Invalid price range"
+    },
+    {
+      "code": 6007,
+      "name": "MathOverflow",
+      "msg": "Math overflow"
+    },
+    {
+      "code": 6008,
+      "name": "TickAlreadyInitialized",
+      "msg": "Tick already initialized"
+    },
+    {
+      "code": 6009,
+      "name": "TickNotInitialized",
+      "msg": "Tick not initialized"
     }
   ],
   "types": [

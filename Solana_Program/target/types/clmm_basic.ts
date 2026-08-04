@@ -133,6 +133,41 @@ export type ClmmBasic = {
       "code": 6002,
       "name": "invalidTickSpacing",
       "msg": "Tick spacing must be greater than 0"
+    },
+    {
+      "code": 6003,
+      "name": "invalidInitialTick",
+      "msg": "Initial tick is not aligned with tick spacing"
+    },
+    {
+      "code": 6004,
+      "name": "invalidTick",
+      "msg": "Tick out of bounds"
+    },
+    {
+      "code": 6005,
+      "name": "invalidSqrtPrice",
+      "msg": "Invalid sqrt price"
+    },
+    {
+      "code": 6006,
+      "name": "invalidPriceRange",
+      "msg": "Invalid price range"
+    },
+    {
+      "code": 6007,
+      "name": "mathOverflow",
+      "msg": "Math overflow"
+    },
+    {
+      "code": 6008,
+      "name": "tickAlreadyInitialized",
+      "msg": "Tick already initialized"
+    },
+    {
+      "code": 6009,
+      "name": "tickNotInitialized",
+      "msg": "Tick not initialized"
     }
   ],
   "types": [
