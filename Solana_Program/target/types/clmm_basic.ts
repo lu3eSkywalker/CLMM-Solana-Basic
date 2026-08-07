@@ -168,6 +168,76 @@ export type ClmmBasic = {
       "code": 6009,
       "name": "tickNotInitialized",
       "msg": "Tick not initialized"
+    },
+    {
+      "code": 6010,
+      "name": "liquidityOverflow",
+      "msg": "Liquidity overflow"
+    },
+    {
+      "code": 6011,
+      "name": "liquidityUnderflow",
+      "msg": "Liquidity underflow"
+    },
+    {
+      "code": 6012,
+      "name": "tickStillInUse",
+      "msg": "Tick still in use"
+    },
+    {
+      "code": 6013,
+      "name": "invalidLiquidity",
+      "msg": "Invalid liquidity amount"
+    },
+    {
+      "code": 6014,
+      "name": "liquiditySubValueError",
+      "msg": "Liquidity subtraction value error"
+    },
+    {
+      "code": 6015,
+      "name": "liquidityAddValueError",
+      "msg": "Liquidity addition value error"
+    },
+    {
+      "code": 6016,
+      "name": "maxTokenOverflow",
+      "msg": "Max token overflow"
+    },
+    {
+      "code": 6017,
+      "name": "positionAlreadyInitialized",
+      "msg": "Position already initialized"
+    },
+    {
+      "code": 6018,
+      "name": "invalidTickArrayPool",
+      "msg": "Tick array belongs to a different pool"
+    },
+    {
+      "code": 6019,
+      "name": "slippageExceeded",
+      "msg": "Slippage exceeded"
+    },
+    {
+      "code": 6020,
+      "name": "positionNotInitialized",
+      "msg": "Position not initialized"
+    },
+    {
+      "code": 6021,
+      "name": "positionPoolMismatch",
+      "msg": "Position does not belong to pool"
+    },
+    {
+      "code": 6022,
+      "name": "positionOwnerMismatch",
+      "msg": "Position owner mismatch"
+    },
+    {
+      "code": 6023,
+      "name": "tokenAccountMintMismatch",
+      "msg": "Token account mint mismatch"
     }
   ],
   "types": [

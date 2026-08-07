@@ -31,4 +31,35 @@ pub enum ClmmError {
 
     #[msg("Tick not initialized")]
     TickNotInitialized,
+
+    #[msg("Liquidity overflow")]
+    LiquidityOverflow,
+
+    #[msg("Liquidity underflow")]
+    LiquidityUnderflow,
+
+    #[msg("Tick still in use")]
+    TickStillInUse,
+#[msg("Invalid liquidity amount")]
+    InvalidLiquidity,
+    #[msg("Liquidity subtraction value error")]
+    LiquiditySubValueError,
+    #[msg("Liquidity addition value error")]
+    LiquidityAddValueError,
+    #[msg("Max token overflow")]
+    MaxTokenOverflow,
+    #[msg("Position already initialized")]
+    PositionAlreadyInitialized,
+    #[msg("Tick array belongs to a different pool")]
+    InvalidTickArrayPool,
+    #[msg("Slippage exceeded")]
+    SlippageExceeded,
+    #[msg("Position not initialized")]
+    PositionNotInitialized,
+    #[msg("Position does not belong to pool")]
+    PositionPoolMismatch,
+    #[msg("Position owner mismatch")]
+    PositionOwnerMismatch,
+    #[msg("Token account mint mismatch")]
+    TokenAccountMintMismatch,
 }

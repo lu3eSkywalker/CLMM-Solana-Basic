@@ -162,6 +162,76 @@
       "code": 6009,
       "name": "TickNotInitialized",
       "msg": "Tick not initialized"
+    },
+    {
+      "code": 6010,
+      "name": "LiquidityOverflow",
+      "msg": "Liquidity overflow"
+    },
+    {
+      "code": 6011,
+      "name": "LiquidityUnderflow",
+      "msg": "Liquidity underflow"
+    },
+    {
+      "code": 6012,
+      "name": "TickStillInUse",
+      "msg": "Tick still in use"
+    },
+    {
+      "code": 6013,
+      "name": "InvalidLiquidity",
+      "msg": "Invalid liquidity amount"
+    },
+    {
+      "code": 6014,
+      "name": "LiquiditySubValueError",
+      "msg": "Liquidity subtraction value error"
+    },
+    {
+      "code": 6015,
+      "name": "LiquidityAddValueError",
+      "msg": "Liquidity addition value error"
+    },
+    {
+      "code": 6016,
+      "name": "MaxTokenOverflow",
+      "msg": "Max token overflow"
+    },
+    {
+      "code": 6017,
+      "name": "PositionAlreadyInitialized",
+      "msg": "Position already initialized"
+    },
+    {
+      "code": 6018,
+      "name": "InvalidTickArrayPool",
+      "msg": "Tick array belongs to a different pool"
+    },
+    {
+      "code": 6019,
+      "name": "SlippageExceeded",
+      "msg": "Slippage exceeded"
+    },
+    {
+      "code": 6020,
+      "name": "PositionNotInitialized",
+      "msg": "Position not initialized"
+    },
+    {
+      "code": 6021,
+      "name": "PositionPoolMismatch",
+      "msg": "Position does not belong to pool"
+    },
+    {
+      "code": 6022,
+      "name": "PositionOwnerMismatch",
+      "msg": "Position owner mismatch"
+    },
+    {
+      "code": 6023,
+      "name": "TokenAccountMintMismatch",
+      "msg": "Token account mint mismatch"
     }
   ],
   "types": [
