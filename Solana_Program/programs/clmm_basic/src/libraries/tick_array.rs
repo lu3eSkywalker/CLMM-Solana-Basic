@@ -4,18 +4,20 @@ use crate::errors::ClmmError;
 
 pub const TICK_ARRAY_SIZE: usize = 88;
 
-#[derive(AnchorSerialize, AnchorDeserialize, Clone, Default, Debug, PartialEq, InitSpace)]
+#[account(zero_copy)]
+#[repr(C)]
 pub struct TickArray {
+    pub pool: Pubkey,
     pub start_tick_index: i32,
     pub tick_spacing: u16,
-    pub initialized: bool,
-    pub pool: Pubkey,
+    pub initialized: u8,
+    pub _padding: u8,  // Explicit padding to match expected size
     pub ticks: [Tick; TICK_ARRAY_SIZE],
 }
 
 impl TickArray {
     pub fn initialize_tick_array(&mut self, start_tick_index: i32, tick_spacing: u16, pool: Pubkey) -> Result<()> {
-        require!(!self.initialized, ClmmError::TickArrayAlreadyInitialized);
+        require!(self.initialized == 0, ClmmError::TickArrayAlreadyInitialized);
         require!(tick_spacing > 0, ClmmError::InvalidTickSpacing);
         require!(
             start_tick_index % tick_spacing as i32 == 0,
@@ -25,10 +27,10 @@ impl TickArray {
         self.start_tick_index = start_tick_index;
         self.tick_spacing = tick_spacing;
         self.pool = pool;
-        self.initialized = true;
+        self.initialized = 1;
 
         for tick in self.ticks.iter_mut() {
-            tick.initialized = false;
+            tick.initialized = 0;
             tick.liquidity_net = 0;
             tick.liquidity_gross = 0;
             tick.index = 0;
@@ -38,7 +40,7 @@ impl TickArray {
     }
 
     fn validate_tick(&self, tick_index: i32) -> Result<usize> {
-        require!(self.initialized, ClmmError::TickArrayNotInitialized);
+        require!(self.initialized == 1, ClmmError::TickArrayNotInitialized);
         require!(
             tick_index % self.tick_spacing as i32 == 0,
             ClmmError::TickNotAligned
@@ -72,7 +74,7 @@ impl TickArray {
     }
 
     pub fn find_tick(&self, tick_index: i32) -> Option<usize> {
-        if !self.initialized {
+        if self.initialized == 0 {
             return None;
         }
 
@@ -95,7 +97,7 @@ impl TickArray {
         current_tick: i32,
         forward: bool,
     ) -> Result<Option<(i32, &Tick)>> {
-        require!(self.initialized, ClmmError::TickArrayNotInitialized);
+        require!(self.initialized == 1, ClmmError::TickArrayNotInitialized);
         require!(
             self.find_tick(current_tick).is_some(),
             ClmmError::TickOutOfRange
@@ -105,14 +107,14 @@ impl TickArray {
 
         if forward {
             for i in (start_index + 1)..TICK_ARRAY_SIZE {
-                if self.ticks[i].initialized {
+                if self.ticks[i].initialized == 1 {
                     let tick_index = self.start_tick_index + (i as i32 * self.tick_spacing as i32);
                     return Ok(Some((tick_index, &self.ticks[i])));
                 }
             }
         } else {
             for i in (0..start_index).rev() {
-                if self.ticks[i].initialized {
+                if self.ticks[i].initialized == 1 {
                     let tick_index = self.start_tick_index + (i as i32 * self.tick_spacing as i32);
                     return Ok(Some((tick_index, &self.ticks[i])));
                 }
