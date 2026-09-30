@@ -1,5 +1,8 @@
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token};
+mod components;
+pub use components::create_pool::CreatePool;
+pub(crate) use components::create_pool::__client_accounts_create_pool;
 
 mod utils;
 use utils::token_vault::create_token_vault_account;
@@ -10,7 +13,7 @@ pub use errors::*;
 mod state;
 pub use state::*;
 
-declare_id!("EzsJ9BEKsa161p4iYoWymzzYY8gnd5uWqAnprekyrMDt");
+declare_id!("BrZPVRu7HgWe9yZM3XiDx9qRdbXwR8RBFW4JiyanQm75");
 
 #[program]
 pub mod clmm_basic {
@@ -73,34 +76,4 @@ pub mod clmm_basic {
 
         Ok(())
     }
-}
-
-#[derive(Accounts)]
-#[instruction(token0_mint: Pubkey, token1_mint: Pubkey, initial_sqrt_price: u128, tick_spacing: u16)]
-pub struct CreatePool<'info> {
-    #[account(mut)]
-    pub payer: Signer<'info>,
-
-    #[account(
-        init,
-        payer = payer,
-        space = 8 + Pool::INIT_SPACE,
-        seeds = [b"pool", token0_mint.key().as_ref(), token1_mint.key().as_ref()],
-        bump
-    )]
-    pub pool: Account<'info, Pool>,
-
-    #[account(mut)]
-    /// CHECK: Created and initialized via create_token_vault_account helper
-    pub token0_vault: AccountInfo<'info>,
-
-    #[account(mut)]
-    /// CHECK: Created and initialized via create_token_vault_account helper
-    pub token1_vault: AccountInfo<'info>,
-
-    pub token0_mint: Account<'info, Mint>,
-    pub token1_mint: Account<'info, Mint>,
-    pub system_program: Program<'info, System>,
-    pub token_program: Program<'info, Token>,
-    pub rent: Sysvar<'info, Rent>,
 }

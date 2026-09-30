@@ -40,7 +40,26 @@ pub enum ClmmError {
 
     #[msg("Tick still in use")]
     TickStillInUse,
-#[msg("Invalid liquidity amount")]
+
+    #[msg("Tick array not initialized")]
+    TickArrayNotInitialized,
+
+    #[msg("Tick out of range")]
+    TickOutOfRange,
+
+    #[msg("Tick not aligned with spacing")]
+    TickNotAligned,
+
+    #[msg("Invalid start tick")]
+    InvalidStartTick,
+
+    #[msg("Arithmetic overflow")]
+    ArithmeticOverflow,
+
+    #[msg("Tick array already initialized")]
+    TickArrayAlreadyInitialized,
+
+    #[msg("Invalid liquidity amount")]
     InvalidLiquidity,
     #[msg("Liquidity subtraction value error")]
     LiquiditySubValueError,

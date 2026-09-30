@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/clmm_basic.json`.
  */
 export type ClmmBasic = {
-  "address": "EzsJ9BEKsa161p4iYoWymzzYY8gnd5uWqAnprekyrMDt",
+  "address": "BrZPVRu7HgWe9yZM3XiDx9qRdbXwR8RBFW4JiyanQm75",
   "metadata": {
     "name": "clmmBasic",
     "version": "0.1.0",
