@@ -95,6 +95,326 @@
           "type": "u16"
         }
       ]
+    },
+    {
+      "name": "decrease_liquidity",
+      "discriminator": [
+        160,
+        38,
+        208,
+        111,
+        104,
+        91,
+        44,
+        1
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "position",
+          "writable": true
+        },
+        {
+          "name": "pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool.token0_mint",
+                "account": "Pool"
+              },
+              {
+                "kind": "account",
+                "path": "pool.token1_mint",
+                "account": "Pool"
+              }
+            ]
+          }
+        },
+        {
+          "name": "lower_tick_array",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  105,
+                  99,
+                  107,
+                  95,
+                  97,
+                  114,
+                  114,
+                  97,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool"
+              },
+              {
+                "kind": "arg",
+                "path": "lower_tick_array_start"
+              }
+            ]
+          }
+        },
+        {
+          "name": "upper_tick_array",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  105,
+                  99,
+                  107,
+                  95,
+                  97,
+                  114,
+                  114,
+                  97,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool"
+              },
+              {
+                "kind": "arg",
+                "path": "upper_tick_array_start"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_token0",
+          "writable": true
+        },
+        {
+          "name": "user_token1",
+          "writable": true
+        },
+        {
+          "name": "pool_token0_vault",
+          "writable": true
+        },
+        {
+          "name": "pool_token1_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "liquidity_to_remove",
+          "type": "u128"
+        },
+        {
+          "name": "amount0_min",
+          "type": "u64"
+        },
+        {
+          "name": "amount1_min",
+          "type": "u64"
+        },
+        {
+          "name": "lower_tick",
+          "type": "i32"
+        },
+        {
+          "name": "upper_tick",
+          "type": "i32"
+        },
+        {
+          "name": "lower_tick_array_start",
+          "type": "i32"
+        },
+        {
+          "name": "upper_tick_array_start",
+          "type": "i32"
+        }
+      ]
+    },
+    {
+      "name": "increase_liquidity",
+      "discriminator": [
+        46,
+        156,
+        243,
+        118,
+        13,
+        205,
+        251,
+        178
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "position",
+          "writable": true
+        },
+        {
+          "name": "pool",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool.token0_mint",
+                "account": "Pool"
+              },
+              {
+                "kind": "account",
+                "path": "pool.token1_mint",
+                "account": "Pool"
+              }
+            ]
+          }
+        },
+        {
+          "name": "lower_tick_array",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  105,
+                  99,
+                  107,
+                  95,
+                  97,
+                  114,
+                  114,
+                  97,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool"
+              },
+              {
+                "kind": "arg",
+                "path": "lower_tick_array_start"
+              }
+            ]
+          }
+        },
+        {
+          "name": "upper_tick_array",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  105,
+                  99,
+                  107,
+                  95,
+                  97,
+                  114,
+                  114,
+                  97,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool"
+              },
+              {
+                "kind": "arg",
+                "path": "upper_tick_array_start"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_token0",
+          "writable": true
+        },
+        {
+          "name": "user_token1",
+          "writable": true
+        },
+        {
+          "name": "pool_token0_vault",
+          "writable": true
+        },
+        {
+          "name": "pool_token1_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount0_max",
+          "type": "u64"
+        },
+        {
+          "name": "amount1_max",
+          "type": "u64"
+        },
+        {
+          "name": "lower_tick",
+          "type": "i32"
+        },
+        {
+          "name": "upper_tick",
+          "type": "i32"
+        },
+        {
+          "name": "lower_tick_array_start",
+          "type": "i32"
+        },
+        {
+          "name": "upper_tick_array_start",
+          "type": "i32"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -109,6 +429,32 @@
         177,
         109,
         188
+      ]
+    },
+    {
+      "name": "Position",
+      "discriminator": [
+        170,
+        188,
+        143,
+        228,
+        122,
+        64,
+        247,
+        208
+      ]
+    },
+    {
+      "name": "TickArray",
+      "discriminator": [
+        69,
+        97,
+        189,
+        190,
+        110,
+        7,
+        66,
+        187
       ]
     }
   ],
@@ -180,56 +526,86 @@
     },
     {
       "code": 6013,
+      "name": "TickArrayNotInitialized",
+      "msg": "Tick array not initialized"
+    },
+    {
+      "code": 6014,
+      "name": "TickOutOfRange",
+      "msg": "Tick out of range"
+    },
+    {
+      "code": 6015,
+      "name": "TickNotAligned",
+      "msg": "Tick not aligned with spacing"
+    },
+    {
+      "code": 6016,
+      "name": "InvalidStartTick",
+      "msg": "Invalid start tick"
+    },
+    {
+      "code": 6017,
+      "name": "ArithmeticOverflow",
+      "msg": "Arithmetic overflow"
+    },
+    {
+      "code": 6018,
+      "name": "TickArrayAlreadyInitialized",
+      "msg": "Tick array already initialized"
+    },
+    {
+      "code": 6019,
       "name": "InvalidLiquidity",
       "msg": "Invalid liquidity amount"
     },
     {
-      "code": 6014,
+      "code": 6020,
       "name": "LiquiditySubValueError",
       "msg": "Liquidity subtraction value error"
     },
     {
-      "code": 6015,
+      "code": 6021,
       "name": "LiquidityAddValueError",
       "msg": "Liquidity addition value error"
     },
     {
-      "code": 6016,
+      "code": 6022,
       "name": "MaxTokenOverflow",
       "msg": "Max token overflow"
     },
     {
-      "code": 6017,
+      "code": 6023,
       "name": "PositionAlreadyInitialized",
       "msg": "Position already initialized"
     },
     {
-      "code": 6018,
+      "code": 6024,
       "name": "InvalidTickArrayPool",
       "msg": "Tick array belongs to a different pool"
     },
     {
-      "code": 6019,
+      "code": 6025,
       "name": "SlippageExceeded",
       "msg": "Slippage exceeded"
     },
     {
-      "code": 6020,
+      "code": 6026,
       "name": "PositionNotInitialized",
       "msg": "Position not initialized"
     },
     {
-      "code": 6021,
+      "code": 6027,
       "name": "PositionPoolMismatch",
       "msg": "Position does not belong to pool"
     },
     {
-      "code": 6022,
+      "code": 6028,
       "name": "PositionOwnerMismatch",
       "msg": "Position owner mismatch"
     },
     {
-      "code": 6023,
+      "code": 6029,
       "name": "TokenAccountMintMismatch",
       "msg": "Token account mint mismatch"
     }
@@ -275,6 +651,91 @@
           {
             "name": "bump",
             "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Position",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "lower_tick",
+            "type": "i32"
+          },
+          {
+            "name": "upper_tick",
+            "type": "i32"
+          },
+          {
+            "name": "liquidity",
+            "type": "u128"
+          },
+          {
+            "name": "amount0",
+            "type": "u64"
+          },
+          {
+            "name": "amount1",
+            "type": "u64"
+          },
+          {
+            "name": "initialized",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TickArray",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "start_tick_index",
+            "type": "i32"
+          },
+          {
+            "name": "tick_spacing",
+            "type": "u16"
+          },
+          {
+            "name": "initialized",
+            "type": "u8"
+          },
+          {
+            "name": "_padding",
+            "type": "u8"
+          },
+          {
+            "name": "ticks",
+            "type": {
+              "array": [
+                {
+                  "defined": {
+                    "name": "Tick"
+                  }
+                },
+                88
+              ]
+            }
           }
         ]
       }
